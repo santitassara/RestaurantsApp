@@ -9,19 +9,11 @@ export const getCurrentCity = async (city:string)=>{
   await axios.get(`https://us1.locationiq.com/v1/search?key=pk.d5406247b75b537f5c0666be1f679ce6&q=${city}&format=json`)
   .then(
     (response:any) => {
-    
-      
       cities = response
       return(response)
-      
-
-    }
-  )
-  .catch(
+    }).catch(
     (error) => {
-     
       return error;
-    }
-  )
+    })
    return cities;
 }

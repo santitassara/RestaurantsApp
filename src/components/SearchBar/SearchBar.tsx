@@ -11,9 +11,17 @@ import { useCustomSelector, useCustomDispatch } from "../../hooks/redux/useLocat
 import { setGeoLocation } from "../../redux/slices/locationSlice";
 import { CitiesInterface } from "../interfaces/citiesInterface";
 import { getCities } from "../../redux/slices/citiesSlice";
+import { getRestaurants } from "../../api/restaurantsApi";
 
  
 export default function SearchBar() {
+
+  useEffect(() => {
+   getRestaurants("londres");
+  }, [])
+  
+
+  
   
   const [search, setSearch] = useState("")
   const [cities, setCities] = useState<Array<CitiesInterface>>([])
