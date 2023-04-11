@@ -32,7 +32,7 @@ console.log(keyFocus);
             {cities?.length > 1 && cities?.map((item: any, index:any, key:any) =>
               
               <div key={item.place_id}
-               onClick={(e) => handleOnAutocompleteClick(e, item?.display_name)}
+               onClick={(e) => handleOnAutocompleteClick(e, item?.lat, item?.lon)}
             
             className={classes["navDropDown-container"]}>
               <p   className={classes[`navDropDown-container-p${keyFocus === index ? "-active" : ""}`]}>{item?.display_name}</p>

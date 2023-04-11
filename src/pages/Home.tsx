@@ -1,6 +1,7 @@
 import React from "react";
 import GeoLocationComponent from "../components/GeoLocation/GeoLocationComponent";
 import Autocomplete from "../components/placesAutocomplete";
+import Restaurants from "../components/RestaurantsComponent/Restaurants";
 
 
 const Home: React.FC = () => {
@@ -34,6 +35,7 @@ const Home: React.FC = () => {
       {/* <button onClick={handleOnClick}></button> */}
       <GeoLocationComponent/>
       <Autocomplete/>
+      <Restaurants/>
     </div>
   )
 }

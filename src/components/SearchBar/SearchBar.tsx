@@ -11,15 +11,13 @@ import { useCustomSelector, useCustomDispatch } from "../../hooks/redux/useLocat
 import { setGeoLocation } from "../../redux/slices/locationSlice";
 import { CitiesInterface } from "../interfaces/citiesInterface";
 import { getCities } from "../../redux/slices/citiesSlice";
-import { getRestaurants } from "../../api/restaurantsApi";
+import { getRestaurants } from "../../redux/slices/restaurantsSlice";
+
 
  
 export default function SearchBar() {
 
-  useEffect(() => {
-   getRestaurants("londres");
-  }, [])
-  
+
 
   
   
@@ -46,6 +44,9 @@ export default function SearchBar() {
   const [coords, setCoords] = useState(Object)
   const { data,loading,inSuccess,error } = useCustomSelector((state)=> state.cities)
   const dispatch = useCustomDispatch();
+  
+
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
    
@@ -94,8 +95,15 @@ export default function SearchBar() {
     //setKeyFocus(-1)
    
     // getCurrentCity(search);
-    dispatch(getCities(search));
+    //dispatch(getCities(search));
     // console.log(location);
+     const lat_lng = {
+       lat:cities[0].lat,
+       lon:cities[0].lon
+     }
+     console.log(cities);
+    
+     dispatch(getRestaurants(lat_lng));
    
   }
   useEffect(() => {
@@ -108,9 +116,19 @@ export default function SearchBar() {
     }
   }, [handleOnClick])
   
-  const handleOnAutocompleteClick = (e: any, cityName: any) => {
-    setSearch(cityName);
+  const handleOnAutocompleteClick = (e: any, lat: string, lon:string) => {
+    // setSearch(cityName);
     //setSearch("");
+    const lat_lng = {
+      lat,
+      lon
+    }
+    console.log(lat_lng);
+    
+    //console.log(cities);
+    
+    dispatch(getRestaurants(lat_lng));
+
     setFocusedForClick(true)
     setFocused(false)
     setKeyFocus(-1)
@@ -174,6 +192,7 @@ export default function SearchBar() {
       return
     }
     
+   
     
     
     if (e.key === 'Enter') {
@@ -255,6 +274,7 @@ export default function SearchBar() {
    } 
   }, [keyFocus])
   
+
   
   //useEffect(() => console.log(weather), [weather]);
   

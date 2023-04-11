@@ -1,0 +1,12 @@
+.restaurantCardsContainer{
+  text-align: center;
+  &-cards{
+    display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        align-items: stretch;
+        flex-direction: row;
+        align-content: stretch;
+        margin: 1em 5em 0em 5em ;
+  }
+}

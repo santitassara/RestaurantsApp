@@ -2,7 +2,6 @@ import axios from "axios";
 import { CitiesInterface } from "../components/interfaces/citiesInterface";
 
 
-
 export const getCurrentCity = async (city:string)=>{
  
   let cities :Array<CitiesInterface> = []

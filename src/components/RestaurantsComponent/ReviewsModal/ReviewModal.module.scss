@@ -1,0 +1,10 @@
+.reviewContainer{
+  text-align: center;
+  &-header{
+    display: flex;
+    flex-direction: column
+  }
+  &-img{
+    height: 15em;
+  }
+}
