@@ -23,7 +23,7 @@ export default function FormDropdown(searchProps:any){
 // }, [weatherContext.citySearch?.Key])
   
 console.log(keyFocus);
-
+const MAX_LENGTH = 80
 
   return(
     <div>
@@ -35,7 +35,7 @@ console.log(keyFocus);
                onClick={(e) => handleOnAutocompleteClick(e, item?.lat, item?.lon)}
             
             className={classes["navDropDown-container"]}>
-              <p   className={classes[`navDropDown-container-p${keyFocus === index ? "-active" : ""}`]}>{item?.display_name}</p>
+              <p   className={classes[`navDropDown-container-p${keyFocus === index ? "-active" : ""}`]}>{`${item?.display_name.substring(0, MAX_LENGTH)}...`}</p>
              </div>)}
           </div>}
     </div>

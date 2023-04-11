@@ -50,9 +50,6 @@ export default function Restaurants () {
     <div >
       {!loading ?
         <div  className={classes["restaurantCardsContainer"]}>
-          <h1>
-            CARDS
-          </h1>
           <div className={classes["restaurantCardsContainer-cards"]}>
             {sortedByRankingRestaurants.map((rest: any) => <RestaurantCards restaurantsProps={rest} />)}
           </div>

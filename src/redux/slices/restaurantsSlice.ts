@@ -4,7 +4,8 @@ import { getCurrentRestaurants } from "../../api/restaurantsApi";
 export const getRestaurants = createAsyncThunk(
   "get/getCurrentRestaurants",
   async (args:object, thunkAPI )=>{
-  
+    console.log(args);
+    
     try {
      const response:any = await getCurrentRestaurants(args)
      return response.businesses;

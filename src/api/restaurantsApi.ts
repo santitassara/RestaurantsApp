@@ -22,7 +22,7 @@ const options = {
     accept: 'application/json',
     "x-requested-with": "xmlhttprequest",
       "Access-Control-Allow-Origin": "*",
-    Authorization: 'Bearer 43ciDFl7Qb2XJ8GUksJbSNxILP9TE5i37SIvukf_9AyndZvmOQXkGf1kwgCwDYMr732E3fcFO_W1HV-E80O50gQI5hYKOn8jhKEStGtKbef7xeKCU8kkuSn-F101ZHYx'
+    Authorization: 'Bearer 6qknuTFvcizPeh9vAipLhH-H0_UrOX8emsftRtjjuOr24xLnZMaw9XFaUVWEpI8vF66IMzR2Tvf33eu8cK4QvQcM5XU9EXztH1a-4_go9eRvBbMolpIvUvTp2Mw1ZHYx'
   }
 };
 

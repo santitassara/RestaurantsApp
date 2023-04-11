@@ -43,7 +43,7 @@ export default function ReviewsModal({restaurantsModalProps}:any) {
       <p>{review?.text}</p>
     </div>
   )):<p>No Reviews Yet :(</p>}
-        <Image className={classes["reviewContainer-img"]} src={restaurantsModalProps?.modalProps?.image_url}/>
+        <Image className={classes["reviewContainer-img"]} src={restaurantsModalProps?.modalProps?.image_url} alt={`${restaurantsModalProps?.modalProps?.name} Image is not available`}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

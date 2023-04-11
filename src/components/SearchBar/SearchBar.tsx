@@ -12,6 +12,7 @@ import { setGeoLocation } from "../../redux/slices/locationSlice";
 import { CitiesInterface } from "../interfaces/citiesInterface";
 import { getCities } from "../../redux/slices/citiesSlice";
 import { getRestaurants } from "../../redux/slices/restaurantsSlice";
+import GeoLocationComponent from "../GeoLocation/GeoLocationComponent";
 
 
  
@@ -69,7 +70,7 @@ export default function SearchBar() {
       console.log("debounced value", e.target.value);
       dispatch(getCities(e.target.value));
  
-    },500)  
+    },350)  
   }
 // useEffect(() => { 
 //     if (inSuccess){
@@ -315,10 +316,11 @@ export default function SearchBar() {
 
 
   return (
+    <div className={classes["SearchContainer"]}>
     <Form 
     className={classes["Aform"]}
     onSubmit={handleOnClick}
-     >
+    >
       {/* <ToastContainer /> */}
       <div >
 
@@ -333,11 +335,13 @@ export default function SearchBar() {
           onFocus={handleOnFocus}
           ref={inputRef} 
           //onBlur={()=>setFocused(false)}
-        />
+          />
           <FormDropdown {...searchProps} />
       </div>
-      <Button onClick={handleOnClick} variant="outline-success">Search</Button>
+      <Button className={classes["SearchContainer-button"]} onClick={handleOnClick} variant="outline-success">Search</Button>
     </Form>
+          <GeoLocationComponent/>
+    </div>
 
 
   )
