@@ -17,7 +17,7 @@ export default function Restaurants () {
   
   }, [data])
   
-  console.log(restaurants);
+  //console.log(restaurants);
   // const restaurantsNames = restaurants?.map((rest)=>rest.name)
   // const restaurantsDistance = restaurants?.map((rest)=>rest.distance)
   // console.log(restaurantsDistance);
@@ -28,7 +28,7 @@ export default function Restaurants () {
 
   const RestCopy = [...restaurants]
   //const deleteUndefined = RestCopy?.splice(4, 1);
-  console.log(RestCopy);
+  //console.log(RestCopy);
   
   const slicedRestaurants = RestCopy.slice(0,10)
 
@@ -60,7 +60,7 @@ export default function Restaurants () {
               {sortedByRankingRestaurants.map((rest: Business) => <RestaurantCards restaurantsProps={rest} />)}
             </div>
           </div> : <Spinner animation="grow" variant="primary" />}
-      </div>: <h1 className={classes["spinner"]} >No results for that query   :(   try another please</h1>}
+      </div>: !inSuccess ? <h1>HOLA</h1>: <h1 className={classes["spinner"]} >No results for that query   :(   try another please</h1>}
     </div>
   )
 

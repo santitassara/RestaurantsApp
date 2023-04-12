@@ -18,7 +18,7 @@ export default function ReviewsModal({restaurantsModalProps}:any) {
   }, [data])
   
   const handleClose = () => restaurantsModalProps.setShow(false);
- console.log(restaurantsModalProps);
+ //console.log(restaurantsModalProps);
  
 
   return (

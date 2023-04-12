@@ -8,7 +8,7 @@ export const getUserLocation = async (): Promise<{ lat: number, lng: number }> =
         resolve({lng:coords.longitude, lat:coords.latitude})
       },
       ( err ) => {
-        alert("Cannot get Geolocation!")
+        alert("Cannot get Geolocation! Please Allow it")
         console.log(err);
         reject();
       }

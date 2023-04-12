@@ -33,9 +33,10 @@ export default function SearchBar() {
   }
 
   useEffect(() => {
+    lat_lon.lat?.length &&
     dispatch(getRestaurants(lat_lon))
     
-  }, [])
+  }, [location])
   
     
  
@@ -46,7 +47,7 @@ export default function SearchBar() {
     if (debounceRef.current)
       clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
-      console.log("debounced value", e.target.value);
+      //console.log("debounced value", e.target.value);
       dispatch(getCities(e.target.value));
       setSearchValue(e.target.value)
     }, 350)
@@ -68,7 +69,7 @@ export default function SearchBar() {
       setCities(data);
     }
     if (error) {
-      console.log(error);
+      //console.log(error);
     }
   }, [handleOnClick])
 
@@ -85,7 +86,7 @@ export default function SearchBar() {
   }
 
   const handleOnFocus = () => {
-    console.log(cities?.length > 3);
+    //console.log(cities?.length > 3);
     cities?.length > 3 && setFocused(true)
   }
 
@@ -100,7 +101,7 @@ export default function SearchBar() {
   ): void => {
     if (e.key === 'ArrowDown') {
       if (data?.length > 1) {
-        console.log(cities?.map((cityName) => cityName.display_name).length)
+       // console.log(cities?.map((cityName) => cityName.display_name).length)
         setKeyFocus(c => (c < cities?.map((cityName) => cityName.display_name).length - 1 ? c + 1 : c))
 
       //  setSearchAutocomplete(true)

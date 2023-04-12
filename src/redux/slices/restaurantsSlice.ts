@@ -5,7 +5,7 @@ import { CoordsInterface } from "../../components/interfaces/globalInterfaces";
 export const getRestaurants = createAsyncThunk(
   "get/getCurrentRestaurants",
   async (args:CoordsInterface, thunkAPI )=>{
-    console.log(args);
+    //console.log(args);
     
     try {
      const response:any = await getCurrentRestaurants(args)

@@ -16,7 +16,7 @@ function RestaurantCards({restaurantsProps}:any) {
   //const [restaurantsReview, setRestaurantsReview] = useState<Array<RestaurantsInterface>>([])
   const [show, setShow] = useState(false);
   const [modalProps, setModalProps] = useState([]);
-  console.log(restaurantsProps);
+  //console.log(restaurantsProps);
   
   // useEffect(() => {
   //   setRestaurantsReview(data)
@@ -25,7 +25,7 @@ function RestaurantCards({restaurantsProps}:any) {
   const dispatch = useCustomDispatch();
 
   const handleOnClick = (restaurantsProps:any)=>{
-    console.log(restaurantsProps.id);
+    //console.log(restaurantsProps.id);
 
     dispatch(getRestaurantsReview(restaurantsProps.id));
     setModalProps(restaurantsProps)

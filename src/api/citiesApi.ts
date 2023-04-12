@@ -15,7 +15,7 @@ export const getCurrentCity = async (city:string)=>{
     (error) => {
       return error;
     })
-    console.log(cities);
+   // console.log(cities);
     
    return cities;
 }

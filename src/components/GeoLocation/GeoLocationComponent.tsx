@@ -20,7 +20,7 @@ const GeoLocationComponent = () => {
   dispatch(setGeoLocation({lat:coords.lat,lon:coords.lng}));
 
     });
-  }, [])
+  }, [coords])
   
   
   
@@ -35,11 +35,12 @@ const GeoLocationComponent = () => {
     lon:lon?.toString(),
   }
 
-  
+
   const handleOnClick = () => {
    
-   
-    dispatch(getRestaurants(lat_lon))
+   location.lat ?
+    dispatch(getRestaurants(lat_lon)) :
+    alert("You must allow location to use this feature.")
     
   }
   //console.log(location);
