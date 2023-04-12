@@ -6,50 +6,28 @@ import classes from "./Restaurants.module.scss"
 import Spinner from 'react-bootstrap/Spinner';
 
 export default function Restaurants () {
-
   const { data,loading,inSuccess,error } = useCustomSelector((state)=> state.restaurants)
   const dispatch = useCustomDispatch();
-
   const [restaurants, setRestaurants] = useState<Array< Business >>([])
+  
   
   useEffect(() => {
     setRestaurants(data)
   
   }, [data])
   
-  //console.log(restaurants);
-  // const restaurantsNames = restaurants?.map((rest)=>rest.name)
-  // const restaurantsDistance = restaurants?.map((rest)=>rest.distance)
-  // console.log(restaurantsDistance);
-  
-  // const restaurantsDistanceSort = restaurantsDistance?.sort((function(a, b){return parseFloat(a)-parseFloat(b)}))
-  // console.log(restaurantsDistanceSort);
-  // const restaurantsDistanceSortedNames = restaurantsDistance?.sort((function(a, b){return parseFloat(a)-parseFloat(b)}))
+  const RestCopy = restaurants && [...restaurants]
+  const slicedRestaurants = RestCopy && RestCopy.slice(0,10)
 
-  const RestCopy = [...restaurants]
-  //const deleteUndefined = RestCopy?.splice(4, 1);
-  //console.log(RestCopy);
-  
-  const slicedRestaurants = RestCopy.slice(0,10)
-
-  let sortedByRankingRestaurants:Array<Business> = [...slicedRestaurants].sort( ( a , b)=>{
+  let sortedByRankingRestaurants:Array<Business> = slicedRestaurants && [...slicedRestaurants].sort( ( a , b)=>{
     if(a.rating < b.rating) return 1;
     if(a.rating > b.rating)return -1;
     return 0;
 });
 
-  // console.log(sortedByRankingRestaurants);
-  // console.log(sortedByRankingRestaurants.map((el:any)=>parseFloat(el.rating)));
-  
-  // const [lat_lng, setLat_lng] = useState({})
-
-  // dispatch(getRestaurants(lat_lng));
-
- 
-
   return (
     <div className={loading ? classes["spinner"] : classes["restaurantCardsContainer"]}  >
-      {restaurants.length ?
+      {restaurants?.length ?
       <div>
         <h1 style={{ textAlign: "center", textDecoration:"underline", fontSize:"3em" }}>
            {!loading && "Restaurants from : " + restaurants?.[0]?.location?.city}
@@ -57,10 +35,10 @@ export default function Restaurants () {
       {!loading ?
           <div className={classes["restaurantCardsContainer"]}>
             <div className={classes["restaurantCardsContainer-cards"]}>
-              {sortedByRankingRestaurants.map((rest: Business) => <RestaurantCards restaurantsProps={rest} />)}
+              {sortedByRankingRestaurants.map((rest: Business) => <RestaurantCards key={rest.id} restaurantsProps={rest} />)}
             </div>
           </div> : <Spinner animation="grow" variant="primary" />}
-      </div>: !inSuccess ? <h1>HOLA</h1>: <h1 className={classes["spinner"]} >No results for that query   :(   try another please</h1>}
+      </div>: !inSuccess ? <div className={classes["spinner"]} > Please Allow your location</div>: <h1 className={classes["spinner"]} >No results for that query   :(   try another please</h1>}
     </div>
   )
 

@@ -13,41 +13,43 @@ const GeoLocationComponent = () => {
   const { location } = useCustomSelector((state)=> state)
   const dispatch = useCustomDispatch();
   
-  useEffect(() => {
-    
-    getUserLocation().then((coords)=>{
-     // setCoords(coords)
-  dispatch(setGeoLocation({lat:coords.lat,lon:coords.lng}));
-
-    });
-  }, [coords])
   
-  
-  
-  //console.log(coords);
-  //getCurrentCity()
-
   const {lat, lon} = location 
-
+  
   const lat_lon = 
   {
     lat:lat?.toString(),
     lon:lon?.toString(),
   }
-
+  
 
   const handleOnClick = () => {
-   
-   location.lat ?
-    dispatch(getRestaurants(lat_lon)) :
+    
+    if(location.lat){
+    dispatch(getRestaurants(lat_lon)) }
+    else{
     alert("You must allow location to use this feature.")
+    getUserLocation().then((coords)=>{
+      // setCoords(coords)
+   dispatch(setGeoLocation({lat:coords.lat,lon:coords.lng}));
+ 
+     });
+    }
+
     
   }
-  //console.log(location);
-  // useEffect(() => {
+ 
     
-  // }, [handleOnClick])
+    useEffect(() => {
+      
+      getUserLocation().then((coords)=>{
+       // setCoords(coords)
+    dispatch(setGeoLocation({lat:coords.lat,lon:coords.lng}));
   
+      });
+    }, [coords])
+    
+
 
   return(
     <div>

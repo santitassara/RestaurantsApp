@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Restaurants App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hello there! 
+
+# APIs
+
+First some things about API calls :
+
+LocationIq API For City queries . 
+
+Yelp API for Restaurant queries . Some things about Yelp :  This API has some problems with CORS and it has limited calls so cors-anywhere.herokuapp is used in order to work properly. If this API fails or has some trouble on fetching you should visit https://cors-anywhere.herokuapp.com/corsdemo in order to get CORS unlocked.
 
 ## Available Scripts
 

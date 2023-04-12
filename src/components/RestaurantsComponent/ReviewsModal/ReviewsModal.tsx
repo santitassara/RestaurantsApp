@@ -4,29 +4,20 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image'
 import { useCustomSelector } from '../../../hooks/redux/useLocation';
 import classes from "../ReviewsModal/ReviewModal.module.scss";
-import { RestaurantsInterface } from '../../interfaces/restaurantsInterface';
+
 
 export default function ReviewsModal({restaurantsModalProps}:any) {
-  
-
   const { data,loading,inSuccess,error } = useCustomSelector((state)=> state.restaurantsReview)
   const [restaurantsReview, setRestaurantsReview] = useState([] as any[])
+ const handleClose = () => restaurantsModalProps.setShow(false);
 
-  useEffect(() => {
+ useEffect(() => {
     setRestaurantsReview(data)
-    
   }, [data])
-  
-  const handleClose = () => restaurantsModalProps.setShow(false);
- //console.log(restaurantsModalProps);
- 
+
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
       <Modal className={classes["reviewContainer"]}  show={restaurantsModalProps?.show} onHide={handleClose} animation={true}>
         <Modal.Header className={classes["reviewContainer-header"]}  closeButton>
           <Modal.Title>{restaurantsModalProps?.modalProps?.name}</Modal.Title>

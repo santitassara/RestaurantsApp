@@ -1,5 +1,5 @@
 
-//import { useCustomSelector } from "../../../hooks/redux/useLocation"
+
 import { CitiesInterface } from "../../interfaces/citiesInterface"
 import { searchPropsInterface } from "../../interfaces/globalInterfaces"
 import classes from "../../SearchBar/SearchBar.module.scss"
@@ -8,7 +8,6 @@ import classes from "../../SearchBar/SearchBar.module.scss"
 export default function FormDropdown(searchProps: searchPropsInterface) {
 
   let { focused, handleOnAutocompleteClick, keyFocus, cities } = searchProps
-  // const { data,loading,inSuccess,error } = useCustomSelector((state)=> state.cities)
   const MAX_LENGTH = 70
   return (
     <div>

@@ -19,11 +19,9 @@ export default function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
   const [focused, setFocused] = useState(false)
   const [focusedForClick, setFocusedForClick] = useState(false)
-  const [coords, setCoords] = useState(Object)
   const { data, loading, inSuccess, error } = useCustomSelector((state) => state.cities)
   const { location } = useCustomSelector((state)=> state)
   const dispatch = useCustomDispatch();
-
   const {lat, lon} = location 
 
   const lat_lon = 
@@ -38,21 +36,17 @@ export default function SearchBar() {
     
   }, [location])
   
-    
- 
-
   const debounceRef = useRef<NodeJS.Timeout>()
   const onQueryChanged = (e: ChangeEvent<HTMLInputElement>) => {
-    //e.preventDefault()
+
     if (debounceRef.current)
       clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
-      //console.log("debounced value", e.target.value);
+
       dispatch(getCities(e.target.value));
       setSearchValue(e.target.value)
     }, 350)
   }
-
 
   const handleOnClick = () => {
     dispatch(getCities(searchValue));
@@ -63,16 +57,14 @@ export default function SearchBar() {
     dispatch(getRestaurants(lat_lng))
   }
 
-
   useEffect(() => {
     if (inSuccess) {
       setCities(data);
     }
     if (error) {
-      //console.log(error);
+
     }
   }, [handleOnClick])
-
 
   const handleOnAutocompleteClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, lat: string, lon: string) => {
     const lat_lng = {
@@ -86,38 +78,25 @@ export default function SearchBar() {
   }
 
   const handleOnFocus = () => {
-    //console.log(cities?.length > 3);
     cities?.length > 3 && setFocused(true)
   }
-
-
   const [keyFocus, setKeyFocus] = useState(-1)
-  //const [searchAutocomplete, setSearchAutocomplete] = useState(false)
-  //const [cityData, setCityData] = useState([] as any[])
-
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>
   ): void => {
     if (e.key === 'ArrowDown') {
       if (data?.length > 1) {
-       // console.log(cities?.map((cityName) => cityName.display_name).length)
         setKeyFocus(c => (c < cities?.map((cityName) => cityName.display_name).length - 1 ? c + 1 : c))
-
-      //  setSearchAutocomplete(true)
       }
     }
     if (e.key === 'ArrowUp') {
       setKeyFocus(c => (c >= 0 && c <= data?.length ? c - 1 : c));
-     // setSearchAutocomplete(true)
     }
     if (e.key === 'Escape') {
       setKeyFocus(-1)
       return
     }
-
-
-
 
     if (e.key === 'Enter') {
       const lat_lng = {
@@ -150,7 +129,7 @@ export default function SearchBar() {
   useEffect(() => {
     document.addEventListener("click", (e) => {
       const target = e.target as HTMLElement;
-      // e.stopPropagation();
+      
       if (inputRef.current?.contains(target)) {
 
         setFocused(true)
@@ -167,20 +146,17 @@ export default function SearchBar() {
         className={classes["Aform"]}
         onSubmit={handleOnClick}
       >
-        {/* <ToastContainer /> */}
         <div >
-
           <Form.Control
             type="search"
             placeholder="Search"
             className={classes["form"]}
             aria-label="Search"
-            //value={search}
             onChange={onQueryChanged}
             onKeyDown={handleKeyDown}
             onFocus={handleOnFocus}
             ref={inputRef}
-          //onBlur={()=>setFocused(false)}
+     
           />
           <FormDropdown {...searchProps} />
         </div>
