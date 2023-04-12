@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Gajraj+One&family=Palanquin:wght@300&display=swap');
+
 .restaurantCardsContainer{
   text-align: center;
+  font-family: 'Palanquin', sans-serif;
   &-cards{
     display: flex;
         justify-content: space-evenly;
@@ -9,4 +12,10 @@
         align-content: stretch;
         margin: 1em 5em 0em 5em ;
   }
+}
+.spinner{
+  display: flex;
+justify-content: center;
+align-items: center;
+  height: 92vh;
 }

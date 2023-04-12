@@ -1,6 +1,6 @@
-import React from "react";
 
-export const getUserLocation = async (): Promise<{}> => {
+
+export const getUserLocation = async (): Promise<{ lat: number, lng: number }> => {
 
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(

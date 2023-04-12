@@ -1,9 +1,20 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getCurrentRestaurantsReview } from "../../api/restaurantsApi";
+import { CityApiInterface } from "../../components/interfaces/globalInterfaces";
+import { ModalProps } from "../../components/interfaces/restaurantReviewsInterface";
+
+
+export interface CitiesStateInterface {
+  data: ModalProps[] ;
+  inSuccess: boolean;
+  message: string;
+  error: boolean;
+  loading: boolean;
+}
 
 export const getRestaurantsReview = createAsyncThunk(
   "get/getCities",
-  async (arg:string, thunkAPI )=>{
+  async (arg:CityApiInterface, thunkAPI )=>{
   
     try {
      const response:any = await getCurrentRestaurantsReview(arg)
@@ -16,7 +27,7 @@ export const getRestaurantsReview = createAsyncThunk(
   
 }) 
 
-const initialState = {
+const initialState:CitiesStateInterface = {
   data:[],
   inSuccess:false,
   message:"",

@@ -15,8 +15,8 @@ const GeolocationSlice = createSlice({
   initialState,
   reducers: {
     setGeoLocation: (state, action:PayloadAction<any>) => {
-      state.lat = action.payload.lat.toString();
-      state.lon = action.payload.lon.toString();
+      state.lat = action.payload.lat;
+      state.lon = action.payload.lon;
     }
     },
 });

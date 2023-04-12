@@ -2,6 +2,7 @@ import axios from "axios";
 import { CitiesInterface } from "../components/interfaces/citiesInterface";
 
 
+
 export const getCurrentCity = async (city:string)=>{
  
   let cities :Array<CitiesInterface> = []
@@ -14,5 +15,7 @@ export const getCurrentCity = async (city:string)=>{
     (error) => {
       return error;
     })
+    console.log(cities);
+    
    return cities;
 }

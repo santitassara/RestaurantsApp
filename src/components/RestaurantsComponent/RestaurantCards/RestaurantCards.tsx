@@ -7,19 +7,21 @@ import { useEffect, useState } from 'react';
 import { getRestaurantsReview } from '../../../redux/slices/restaurantsReviewSlice';
 import ReviewsModal from '../ReviewsModal/ReviewsModal'
 
+
+
 function RestaurantCards({restaurantsProps}:any) {
   //console.log(restaurantsProps);
 
   const { data,loading,inSuccess,error } = useCustomSelector((state)=> state.restaurantsReview)
-  const [restaurantsReview, setRestaurantsReview] = useState<Array<RestaurantsInterface>>([])
+  //const [restaurantsReview, setRestaurantsReview] = useState<Array<RestaurantsInterface>>([])
   const [show, setShow] = useState(false);
   const [modalProps, setModalProps] = useState([]);
-
+  console.log(restaurantsProps);
   
-  useEffect(() => {
-    setRestaurantsReview(data)
+  // useEffect(() => {
+  //   setRestaurantsReview(data)
     
-  }, [data])
+  // }, [data])
   const dispatch = useCustomDispatch();
 
   const handleOnClick = (restaurantsProps:any)=>{
@@ -54,7 +56,7 @@ function RestaurantCards({restaurantsProps}:any) {
             {`Rating: ${restaurantsProps.rating}`}
           </h5>
         </Card.Text>
-        <Button onClick={()=>handleOnClick(restaurantsProps)} variant="primary" className={classes["card-button"]}>Go somewhere</Button>
+        <Button onClick={()=>handleOnClick(restaurantsProps)} variant="primary" className={classes["card-button"]}>Show Details</Button>
       </Card.Body>
     </Card>
     </div>

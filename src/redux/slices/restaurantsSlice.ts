@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getCurrentRestaurants } from "../../api/restaurantsApi";
+import { CoordsInterface } from "../../components/interfaces/globalInterfaces";
 
 export const getRestaurants = createAsyncThunk(
   "get/getCurrentRestaurants",
-  async (args:object, thunkAPI )=>{
+  async (args:CoordsInterface, thunkAPI )=>{
     console.log(args);
     
     try {

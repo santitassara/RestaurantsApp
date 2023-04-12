@@ -1,5 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getCurrentCity } from "../../api/citiesApi";
+import { CitiesInterface } from "../../components/interfaces/citiesInterface";
+
+
+export interface CitiesStateInterface {
+  data: CitiesInterface[] ;
+  inSuccess: boolean;
+  message: string;
+  error: boolean;
+  loading: boolean;
+}
 
 export const getCities = createAsyncThunk(
   "get/getCities",
@@ -16,7 +26,7 @@ export const getCities = createAsyncThunk(
   
 }) 
 
-const initialState = {
+const initialState:CitiesStateInterface = {
   data:[],
   inSuccess:false,
   message:"",
